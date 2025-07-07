@@ -6,6 +6,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,8 +24,10 @@ class MyApp extends StatelessWidget {
 }
 
 class PortfolioHomePage extends StatefulWidget {
+  const PortfolioHomePage({super.key});
+
   @override
-  _PortfolioHomePageState createState() => _PortfolioHomePageState();
+  State<PortfolioHomePage> createState() => _PortfolioHomePageState();
 }
 
 class _PortfolioHomePageState extends State<PortfolioHomePage> {

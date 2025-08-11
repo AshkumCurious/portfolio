@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_website/theme/app_color_theme.dart';
 
 import 'screens/portfolio_screen.dart';
 
@@ -16,12 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Ashish Kumar - Flutter Developer',
       navigatorKey: navigatorKey,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.purple,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: 'Inter',
-      ),
+      theme: orangeDarkTheme,
       home: PortfolioScreen(),
       debugShowCheckedModeBanner: false,
     );

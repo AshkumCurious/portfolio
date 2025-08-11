@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_website/app_widgets.dart/logo.dart';
+import 'package:portfolio_website/app_widgets.dart/menu.dart';
+import 'package:portfolio_website/utils/responsive_utils.dart';
 
-import '../theme/app_colors.dart';
-import '../widgets/about_section.dart';
-import '../widgets/button.dart';
-import '../widgets/nav_item.dart';
+import 'hero_section.dart';
 
 class PortfolioScreen extends StatefulWidget {
   const PortfolioScreen({super.key});
@@ -30,268 +30,48 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
-      body: SingleChildScrollView(
-        controller: _scrollController,
-        child: Column(
-          children: [
-            buildHeader(),
-            buildHeroSection(),
-            buildAboutSection(),
-            buildTechStackSection(),
-            buildProjectsSection(),
-            buildExperienceSection(),
-            buildContactSection(),
-            buildFooter(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget buildHeader() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-      decoration: BoxDecoration(
-        color: AppColors.cardColor.withOpacity(0.95),
-        border: Border(
-          bottom: BorderSide(
-            color: AppColors.neonAccent.withOpacity(0.2),
-            width: 1,
-          ),
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [AppColors.neonPurple, AppColors.neonBlue],
-              ),
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.neonPurple.withOpacity(0.3),
-                  blurRadius: 15,
-                  offset: Offset(0, 5),
-                ),
-              ],
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  width: 8,
-                  height: 8,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-                SizedBox(width: 12),
-                Text(
-                  'Ashish Kumar',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 0.5,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          if (MediaQuery.of(context).size.width > 600)
-            Row(
-              children: [
-                buildNavItem('About', () => _scrollToSection(1)),
-                buildNavItem('Skills', () => _scrollToSection(2)),
-                buildNavItem('Projects', () => _scrollToSection(3)),
-                buildNavItem('Experience', () => _scrollToSection(4)),
-                buildNavItem('Contact', () => _scrollToSection(5)),
-              ],
-            ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildHeroSection() {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.symmetric(horizontal: 24),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Profile avatar with clean design
-            Container(
-              width: 140,
-              height: 140,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [AppColors.neonPurple, AppColors.neonBlue],
-                ),
-                borderRadius: BorderRadius.circular(70),
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.neonPurple.withOpacity(0.4),
-                    blurRadius: 20,
-                    spreadRadius: 2,
-                  ),
-                ],
-              ),
-              child: Center(
-                child: Text(
-                  'AK',
-                  style: TextStyle(
-                    fontSize: 42,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 40),
-
-            // Name with gradient text
-            ShaderMask(
-              shaderCallback:
-                  (bounds) => LinearGradient(
-                    colors: [
-                      AppColors.neonPurple,
-                      AppColors.neonBlue,
-                      AppColors.neonAccent,
-                    ],
-                  ).createShader(bounds),
-              child: Text(
-                'Hey, I\'m Ashish Kumar',
-                style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width > 600 ? 56 : 40,
-                  fontWeight: FontWeight.w900,
-                  color: Colors.white,
-                  letterSpacing: -1.2,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            SizedBox(height: 24),
-
-            // Subtitle with clean card design
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 28, vertical: 16),
-              decoration: BoxDecoration(
-                color: AppColors.cardColor.withOpacity(0.9),
-                borderRadius: BorderRadius.circular(50),
-                border: Border.all(
-                  color: AppColors.neonAccent.withOpacity(0.3),
-                  width: 1,
-                ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.code, color: AppColors.neonAccent, size: 20),
-                  SizedBox(width: 12),
-                  Text(
-                    'Flutter Developer • UI/UX Enthusiast',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: AppColors.textColor,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 0.5,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 50),
-
-            // CTA buttons
-            Wrap(
-              spacing: 20,
-              runSpacing: 16,
-              alignment: WrapAlignment.center,
-              children: [
-                buildElegantButton(
-                  'View My Work',
-                  Icons.rocket_launch,
-                  () => _scrollToSection(3),
-                  isPrimary: true,
-                ),
-                buildElegantButton(
-                  'Get In Touch',
-                  Icons.message,
-                  () => _scrollToSection(5),
-                  isPrimary: false,
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget buildElegantButton(
-    String text,
-    IconData icon,
-    VoidCallback onPressed, {
-    required bool isPrimary,
-  }) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient:
-            isPrimary
-                ? LinearGradient(
-                  colors: [AppColors.neonPurple, AppColors.neonBlue],
-                )
-                : null,
-        color: isPrimary ? null : Colors.transparent,
-        borderRadius: BorderRadius.circular(30),
-        border:
-            isPrimary
-                ? null
-                : Border.all(
-                  color: AppColors.neonAccent.withOpacity(0.5),
-                  width: 2,
-                ),
-        boxShadow:
-            isPrimary
-                ? [
-                  BoxShadow(
-                    color: AppColors.neonPurple.withOpacity(0.4),
-                    blurRadius: 15,
-                    offset: Offset(0, 8),
-                  ),
-                ]
-                : null,
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onPressed,
-          borderRadius: BorderRadius.circular(30),
+      backgroundColor: const Color(0xFF1E1E1E),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          controller: _scrollController,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
+            // Using responsive padding
+            padding: context.responsivePadding,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(icon, color: Colors.white, size: 20),
-                SizedBox(width: 12),
-                Text(
-                  text,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 0.5,
+                context.responsiveWidget(
+                  mobile: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [const Logo(), const Menu()],
+                  ),
+                  desktop: Row(
+                    children: [const Logo(), const Spacer(), const Menu()],
                   ),
                 ),
+                SizedBox(
+                  height: context.responsiveSpacing(
+                    mobile: 40.0,
+                    tablet: 60.0,
+                    desktop: 80.0,
+                    largeDesktop: 100.0,
+                  ),
+                ),
+                // Hero Section
+                const HeroSection(),
+                // Add spacing for future sections
+                SizedBox(
+                  height: context.responsiveSpacing(
+                    mobile: 60.0,
+                    tablet: 80.0,
+                    desktop: 100.0,
+                    largeDesktop: 120.0,
+                  ),
+                ),
+                // Add your other sections here
+                _buildAboutSection(),
+                _buildProjectsSection(),
+                // _buildContactSection(),
               ],
             ),
           ),
@@ -300,41 +80,48 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     );
   }
 
-  Widget buildFooter() {
+  // Example of additional sections you can add
+  Widget _buildAboutSection() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 40),
+      width: double.infinity,
+      padding: EdgeInsets.all(
+        context.responsiveSpacing(mobile: 20.0, tablet: 30.0, desktop: 40.0),
+      ),
       decoration: BoxDecoration(
-        color: AppColors.backgroundColor,
-        border: Border(
-          top: BorderSide(
-            color: AppColors.neonAccent.withOpacity(0.2),
-            width: 1,
-          ),
-        ),
+        color: const Color(0xFF2A2A2A),
+        borderRadius: context.responsiveBorderRadius,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.favorite, color: AppColors.neonPink, size: 20),
-              SizedBox(width: 8),
-              Text(
-                'Crafted with Flutter & Passion',
-                style: TextStyle(
-                  color: AppColors.textColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 12),
           Text(
-            '© 2024 Ashish Kumar. All rights reserved.',
+            "About Me",
             style: TextStyle(
-              color: AppColors.textColor.withOpacity(0.6),
-              fontSize: 14,
+              fontFamily: 'Lato',
+              fontWeight: FontWeight.w700,
+              fontSize: context.responsiveFontSize(
+                mobile: 24.0,
+                tablet: 28.0,
+                desktop: 32.0,
+              ),
+              color: Colors.white,
+            ),
+          ),
+          SizedBox(
+            height: context.responsiveSpacing(mobile: 16.0, desktop: 20.0),
+          ),
+          Text(
+            "I am a passionate UI/UX designer with over 5 years of experience in creating beautiful and functional digital experiences. I love turning complex problems into simple, beautiful, and intuitive designs.",
+            style: TextStyle(
+              fontFamily: 'Lato',
+              fontWeight: FontWeight.w400,
+              fontSize: context.responsiveFontSize(
+                mobile: 16.0,
+                tablet: 18.0,
+                desktop: 18.0,
+              ),
+              height: 1.6,
+              color: const Color(0xFF959595),
             ),
           ),
         ],
@@ -342,30 +129,126 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     );
   }
 
-  void _scrollToSection(int section) {
-    double offset = 0;
-    switch (section) {
-      case 1: // About
-        offset = MediaQuery.of(context).size.height * 1.0;
-        break;
-      case 2: // Tech Stack
-        offset = MediaQuery.of(context).size.height * 1.8;
-        break;
-      case 3: // Projects
-        offset = MediaQuery.of(context).size.height * 2.6;
-        break;
-      case 4: // Experience
-        offset = MediaQuery.of(context).size.height * 4.0;
-        break;
-      case 5: // Contact
-        offset = MediaQuery.of(context).size.height * 5.2;
-        break;
-    }
+  Widget _buildProjectsSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "My Projects",
+          style: TextStyle(
+            fontFamily: 'Lato',
+            fontWeight: FontWeight.w700,
+            fontSize: context.responsiveFontSize(
+              mobile: 24.0,
+              tablet: 28.0,
+              desktop: 32.0,
+            ),
+            color: Colors.white,
+          ),
+        ),
+        SizedBox(
+          height: context.responsiveSpacing(mobile: 20.0, desktop: 30.0),
+        ),
+        // Add your project cards here
+        GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: context.responsiveValue(
+              mobile: 1,
+              tablet: 2,
+              desktop: 3,
+            ),
+            crossAxisSpacing: context.responsiveSpacing(
+              mobile: 16.0,
+              desktop: 24.0,
+            ),
+            mainAxisSpacing: context.responsiveSpacing(
+              mobile: 16.0,
+              desktop: 24.0,
+            ),
+            childAspectRatio: 1.2,
+          ),
+          itemCount: 6, // Replace with your actual project count
+          itemBuilder: (context, index) {
+            return _buildProjectCard(context, index);
+          },
+        ),
+      ],
+    );
+  }
 
-    _scrollController.animateTo(
-      offset,
-      duration: Duration(milliseconds: 800),
-      curve: Curves.easeInOutCubic,
+  Widget _buildProjectCard(BuildContext context, int index) {
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color(0xFF2A2A2A),
+        borderRadius: context.responsiveBorderRadius,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: context.responsiveElevation,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: context.responsiveBorderRadius,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              flex: 3,
+              child: Container(
+                width: double.infinity,
+                color: const Color(0xFF3A3A3A),
+                child: const Icon(
+                  Icons.image,
+                  size: 48,
+                  color: Color(0xFF666666),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: EdgeInsets.all(
+                  context.responsiveSpacing(mobile: 12.0, desktop: 16.0),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Project ${index + 1}",
+                      style: TextStyle(
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.w600,
+                        fontSize: context.responsiveFontSize(
+                          mobile: 16.0,
+                          desktop: 18.0,
+                        ),
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      "UI/UX Design",
+                      style: TextStyle(
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.w400,
+                        fontSize: context.responsiveFontSize(
+                          mobile: 14.0,
+                          desktop: 14.0,
+                        ),
+                        color: const Color(0xFF959595),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

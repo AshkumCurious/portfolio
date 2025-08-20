@@ -10,7 +10,7 @@ class NavBarLogo extends StatelessWidget {
     // theme
     var theme = Theme.of(context);
     //
-    var textSty = TextStyle(
+    var textStyle = TextStyle(
       color: theme.textColor,
       fontWeight: FontWeight.w100,
       fontSize: Responsive.isDesktop(context) ? 32 : 20,
@@ -18,14 +18,7 @@ class NavBarLogo extends StatelessWidget {
 
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: [
-        Text("< ", style: textSty),
-        Text("Sudesh", style: textSty),
-        Text(
-          Responsive.isDesktop(context) ? " />\t\t" : " />",
-          style: textSty,
-        )
-      ],
+      children: [],
     );
   }
 }

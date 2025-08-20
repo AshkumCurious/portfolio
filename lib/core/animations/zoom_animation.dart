@@ -89,11 +89,11 @@ class _ZoomAnimationsState extends State<ZoomAnimations>
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.black.withOpacity(0.8),
-              image: const DecorationImage(
-                fit: BoxFit.cover,
-                alignment: Alignment.bottomLeft,
-                image: AssetImage('assets/imgs/IMG_0107.png'),
-              ),
+              // image: const DecorationImage(
+              //   fit: BoxFit.cover,
+              //   alignment: Alignment.bottomLeft,
+              //   image: AssetImage('assets/imgs/IMG_0107.png'),
+              // ),
             ),
           ),
         ),

@@ -29,7 +29,7 @@ class _ServiceCardState extends State<_ServiceCard> {
       },
       child: Container(
         width: Responsive.isTablet(context) ? 400 : 300,
-        // height: 600,
+        height: 400,
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
         decoration: BoxDecoration(
           // gradient: isHover ? pinkpurple : grayBack,
@@ -37,54 +37,36 @@ class _ServiceCardState extends State<_ServiceCard> {
           borderRadius: BorderRadius.circular(15),
           boxShadow: isHover ? [primaryColorShadow] : [blackColorShadow],
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              widget.service.icon,
-              height: 60,
-            ),
-            Space.y(3.w)!,
-            Text(widget.service.name,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                widget.service.icon,
+                color: Colors.white,
+                height: 50,
+              ),
+              Space.y(3.w)!,
+              Text(widget.service.name,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: isHover ? whiteColor : theme.textColor,
+                  )),
+              Space.y(1.w)!,
+              Text(
+                widget.service.description,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: isHover ? whiteColor : theme.textColor,
-                )),
-            Space.y(1.w)!,
-            Text(
-              widget.service.description,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: isHover ? whiteColor.withOpacity(0.8) : theme.textColor,
-                fontWeight: FontWeight.w200,
-                fontSize: 13,
+                  color: isHover ? whiteColor.withOpacity(0.8) : theme.textColor,
+                  fontWeight: FontWeight.w200,
+                  fontSize: 13,
+                ),
               ),
-            ),
-            Space.y(2.w)!,
-            if (Responsive.isDesktop(context))
-              Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: widget.service.tool
-                      .map((e) => Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text('🛠   '),
-                              Expanded(
-                                child: Text(e,
-                                    style: TextStyle(
-                                      color: isHover
-                                          ? whiteColor
-                                          : theme.textColor,
-                                    )),
-                              ),
-                            ],
-                          ))
-                      .toList()),
-            if (Responsive.isMobile(context) || Responsive.isTablet(context))
-              Expanded(
-                child: ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
+              Space.y(2.w)!,
+              if (Responsive.isDesktop(context))
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: widget.service.tool
                         .map((e) => Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,8 +83,30 @@ class _ServiceCardState extends State<_ServiceCard> {
                               ],
                             ))
                         .toList()),
-              )
-          ],
+              if (Responsive.isMobile(context) || Responsive.isTablet(context))
+                Expanded(
+                  child: ListView(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      children: widget.service.tool
+                          .map((e) => Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text('🛠   '),
+                                  Expanded(
+                                    child: Text(e,
+                                        style: TextStyle(
+                                          color: isHover
+                                              ? whiteColor
+                                              : theme.textColor,
+                                        )),
+                                  ),
+                                ],
+                              ))
+                          .toList()),
+                )
+            ],
+          ),
         ),
       ),
     );

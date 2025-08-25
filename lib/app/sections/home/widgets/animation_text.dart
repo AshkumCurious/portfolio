@@ -1,5 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:mysite/changes/strings.dart';
+import 'package:mysite/constants/strings.dart';
 import 'package:mysite/core/configs/configs.dart';
 
 List<TyperAnimatedText> desktopList = [

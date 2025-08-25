@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'configs.dart';
+
+import '../../app/utils/app_typography.dart' show AppText;
+import '../../app/utils/space.dart';
+
 
 class App {
-  // static bool? isLtr;
-  // static bool showAds = false;
 
   static init(BuildContext context) {
-    // UI.init(context);
-    // AppDimensions.init();
-    // AppTheme.init(context);
-    // UIProps.init();
     Space.init();
     AppText.init();
-    // isLtr = Directionality.of(context) == TextDirection.ltr;
   }
 }

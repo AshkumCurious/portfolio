@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mysite/app/utils/project_utils.dart';
-import 'package:mysite/core/color/colors.dart';
+import 'package:mysite/core/theme/color/colors.dart';
 import 'package:mysite/core/configs/configs.dart';
 import 'package:mysite/core/res/responsive.dart';
-import 'package:mysite/core/util/constants.dart';
+import 'package:mysite/app/utils/constants.dart';
 import 'package:sizer/sizer.dart';
 
 class ProjectCard extends StatefulWidget {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysite/app/widgets/custom_outline.dart';
+import 'package:mysite/core/res/responsive.dart';
 import 'package:mysite/core/theme/app_theme.dart';
 
 class ZoomAnimations extends StatefulWidget {
@@ -23,7 +24,7 @@ class _ZoomAnimationsState extends State<ZoomAnimations>
     _controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 4));
 
-    sizeAnimation = Tween(begin: 0.0, end: 0.2).animate(CurvedAnimation(
+    sizeAnimation = Tween(begin: 0.0, end: 0.4).animate(CurvedAnimation(
         parent: _controller,
         curve: const Interval(0.40, 0.75, curve: Curves.easeOut)));
     _controller.forward();
@@ -60,8 +61,8 @@ class _ZoomAnimationsState extends State<ZoomAnimations>
     var theme = Theme.of(context);
 
     return SizedBox(
-      width: size.width / 4,
-      height: size.width / 4,
+      width:Responsive.isDesktop(context)? size.width / 4  : size.width / 2,
+      height:Responsive.isDesktop(context)? size.width / 4  : size.width / 2,
       child: AlignTransition(
         alignment: _alignAnimation,
         child: CustomOutline(

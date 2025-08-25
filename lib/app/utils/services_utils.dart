@@ -14,7 +14,7 @@ class ServicesUtils {
 List<ServicesUtils> servicesUtils = [
   ServicesUtils(
     name: 'Flutter App Development',
-    icon: 'assets/icons/flutter.svg',
+    icon: 'assets/icons/mobile.svg',
     description:
         "Building high-performance cross-platform mobile applications with clean architecture and smooth UI/UX.",
     tool: ['Flutter', 'Dart', 'Provider', 'Bloc', 'GetX'],
@@ -35,7 +35,7 @@ List<ServicesUtils> servicesUtils = [
   ),
   ServicesUtils(
     name: 'Cloud & Database Integration',
-    icon: 'assets/icons/cloud.svg',
+    icon: 'assets/icons/data.svg',
     description:
         "Leveraging cloud services and local storage for secure, scalable, and reliable applications.",
     tool: [
@@ -46,7 +46,7 @@ List<ServicesUtils> servicesUtils = [
   ),
   ServicesUtils(
     name: 'Competitive Programming',
-    icon: 'assets/icons/code.svg',
+    icon: 'assets/icons/cp.svg',
     description:
         "Sharpening problem-solving skills and optimizing algorithms through coding challenges.",
     tool: ['C++', 'DSA', 'Problem Solving'],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../core/configs/others/space.dart';
+import '../../utils/space.dart';
 import '../../utils/experience_utils.dart';
 import '../../widgets/custom_text_heading.dart';
 
@@ -30,17 +30,16 @@ class ExperienceMobile extends StatelessWidget {
                     Container(
                       height: 16,
                       width: 16,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.blueAccent,
                         shape: BoxShape.circle,
                       ),
                     ),
-                    if (index != experiences.length - 1)
-                      Container(
-                        height: 80,
-                        width: 2,
-                        color: Colors.blueAccent,
-                      ),
+                    Container(
+                      height: 80,
+                      width: 2,
+                      color: Colors.blueAccent.shade100,
+                    ),
                   ],
                 ),
                 const SizedBox(width: 12),
@@ -56,19 +55,19 @@ class ExperienceMobile extends StatelessWidget {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(exp["duration"]!,
+                            Text(exp.duration,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.grey)),
                             const SizedBox(height: 6),
-                            Text(exp["title"]!,
+                            Text(exp.title,
                                 style: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.bold)),
-                            Text(exp["company"]!,
+                            Text(exp.company,
                                 style: const TextStyle(
                                     fontSize: 14, fontStyle: FontStyle.italic)),
                             const SizedBox(height: 6),
-                            Text(exp["description"]!,
+                            Text(exp.description,
                                 style: const TextStyle(fontSize: 14)),
                           ]),
                     ),

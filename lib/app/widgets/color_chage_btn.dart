@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mysite/core/color/colors.dart';
+import 'package:mysite/core/theme/color/colors.dart';
 import 'package:mysite/core/configs/configs.dart';
 import 'package:mysite/core/res/responsive.dart';
 
@@ -182,52 +182,52 @@ class _DesktopCCButtonState extends State<DesktopCCButton> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    return Stack(
-      children: [
-        if (!isHover)
-          Container(
-            height: 65,
-            width: 250,
-            decoration: BoxDecoration(
-              border: Border.all(color: theme.textColor, width: 3),
-              borderRadius: BorderRadius.circular(6),
-            ),
-          ),
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          height: 65,
-          width: _animatedWidth,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6),
-            gradient: pinkpurple,
-          ),
-        ),
-        InkWell(
-          onHover: (value) {
-            setState(() {
-              isHover = !isHover;
-              _animatedWidth = value ? 250 : 0.0;
-            });
-          },
-          onTap: () {
-            setState(() => _animatedWidth = 250);
-            widget.onTap();
-          },
-          child: SizedBox(
-            height: 65,
-            width: 250,
-            child: Center(
-              child: Text(
-                widget.text.toUpperCase(),
-                style: TextStyle(
-                  color: isHover ? whiteColor : theme.textColor,
-                  fontSize: 18,
+    return InkWell(
+      onHover: (value) {
+        setState(() {
+          isHover = !isHover;
+          _animatedWidth = value ? 250 : 0.0;
+        });
+      },
+      onTap: () {
+        setState(() => _animatedWidth = 250);
+        widget.onTap();
+      },
+      child: Stack(
+        // alignment: Alignment.centerLeft,
+        children: [
+          if (!isHover)
+            Container(
+              height: 65,
+              width: 250,
+              decoration: BoxDecoration(
+                border: Border.all(color: theme.textColor, width: 3),
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Center(
+                child: Text(
+                  widget.text.toUpperCase(),
+                  style: TextStyle(
+                    color: isHover ? whiteColor : theme.textColor,
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ),
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            height: 65,
+            width: _animatedWidth,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(6),
+              gradient: pinkpurple,
+            ),
+            child:   Center(
+              child:isHover? Icon(Icons.download_for_offline_rounded):Container()
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

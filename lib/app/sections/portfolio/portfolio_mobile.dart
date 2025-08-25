@@ -3,10 +3,10 @@ import 'package:carousel_slider/carousel_slider.dart' as custom_carousel;
 import 'package:flutter/material.dart';
 import 'package:mysite/app/utils/project_utils.dart';
 import 'package:mysite/app/widgets/custom_text_heading.dart';
-import 'package:mysite/changes/links.dart';
-import 'package:mysite/changes/strings.dart';
+import 'package:mysite/constants/links.dart';
+import 'package:mysite/constants/strings.dart';
 import 'package:mysite/core/configs/configs.dart';
-import 'package:mysite/core/util/constants.dart';
+import 'package:mysite/app/utils/constants.dart';
 import 'package:sizer/sizer.dart';
 
 import 'widgets/project_card.dart';

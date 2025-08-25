@@ -66,7 +66,7 @@ class _ServiceCardState extends State<_ServiceCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: widget.service.tool
                       .map((e) => Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Text('🛠   '),
                               Expanded(
@@ -87,6 +87,7 @@ class _ServiceCardState extends State<_ServiceCard> {
                     shrinkWrap: true,
                     children: widget.service.tool
                         .map((e) => Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text('🛠   '),
                                 Expanded(

@@ -29,7 +29,7 @@ class _ServiceCardState extends State<_ServiceCard> {
       },
       child: Container(
         width: Responsive.isTablet(context) ? 400 : 300,
-        // height: AppDimensions.normalize(100),
+        // height: 600,
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
         decoration: BoxDecoration(
           // gradient: isHover ? pinkpurple : grayBack,
@@ -66,13 +66,17 @@ class _ServiceCardState extends State<_ServiceCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: widget.service.tool
                       .map((e) => Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Text('🛠   '),
-                              Text(e,
-                                  style: TextStyle(
-                                    color:
-                                        isHover ? whiteColor : theme.textColor,
-                                  )),
+                              Expanded(
+                                child: Text(e,
+                                    style: TextStyle(
+                                      color: isHover
+                                          ? whiteColor
+                                          : theme.textColor,
+                                    )),
+                              ),
                             ],
                           ))
                       .toList()),
@@ -85,12 +89,14 @@ class _ServiceCardState extends State<_ServiceCard> {
                         .map((e) => Row(
                               children: [
                                 const Text('🛠   '),
-                                Text(e,
-                                    style: TextStyle(
-                                      color: isHover
-                                          ? whiteColor
-                                          : theme.textColor,
-                                    )),
+                                Expanded(
+                                  child: Text(e,
+                                      style: TextStyle(
+                                        color: isHover
+                                            ? whiteColor
+                                            : theme.textColor,
+                                      )),
+                                ),
                               ],
                             ))
                         .toList()),

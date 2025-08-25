@@ -13,31 +13,42 @@ class ServicesUtils {
 
 List<ServicesUtils> servicesUtils = [
   ServicesUtils(
-    name: 'Android App Development',
-    icon: 'assets/icons/android.svg',
+    name: 'Flutter App Development',
+    icon: 'assets/icons/flutter.svg',
     description:
-        "Are you interested in the great Mobile app? Let's make it a reality.",
-    tool: ['Flutter', 'React Native', 'Android (Kotlin or Java)'],
+        "Building high-performance cross-platform mobile applications with clean architecture and smooth UI/UX.",
+    tool: ['Flutter', 'Dart', 'Provider', 'Bloc', 'GetX'],
   ),
   ServicesUtils(
-    name: 'iOS App Development',
-    icon: 'assets/icons/apple.svg',
+    name: 'Backend Development',
+    icon: 'assets/icons/backend.svg',
     description:
-        "Are you interested in the great Mobile app? Let's make it a reality.",
-    tool: ['Flutter', 'React Native'],
+        "Designing and implementing scalable backend systems with APIs and database integration.",
+    tool: ['Node.js', 'PostgreSQL', 'Sequelize', 'WebSocket', 'REST APIs'],
   ),
   ServicesUtils(
-    name: 'UI/UX Designing',
-    icon: 'assets/icons/graphic.svg',
+    name: 'IoT & Real-Time Solutions',
+    icon: 'assets/icons/iot.svg',
     description:
-        "I'm creating elegant designs suited to your needs following core design theory. ",
-    tool: ['Adobe XD', 'Figma', 'Photoshop'],
+        "Developing IoT applications with real-time communication and device integration.",
+    tool: ['MQTT', 'Bluetooth', 'Embedded Servers', 'Socket Programming'],
   ),
   ServicesUtils(
-    name: 'Web Development',
-    icon: 'assets/icons/website.svg',
+    name: 'Cloud & Database Integration',
+    icon: 'assets/icons/cloud.svg',
     description:
-        "Do you have an idea for your next great website? Let's make it a reality.",
-    tool: ['Flutter', 'Html,css,js', 'Android (Kotlin or Java)'],
+        "Leveraging cloud services and local storage for secure, scalable, and reliable applications.",
+    tool: [
+      'Firebase (Auth, Firestore, Cloud Functions)',
+      'AWS (EC2, SES)',
+      'Hive'
+    ],
+  ),
+  ServicesUtils(
+    name: 'Competitive Programming',
+    icon: 'assets/icons/code.svg',
+    description:
+        "Sharpening problem-solving skills and optimizing algorithms through coding challenges.",
+    tool: ['C++', 'DSA', 'Problem Solving'],
   ),
 ];
